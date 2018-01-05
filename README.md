@@ -140,7 +140,9 @@ connect-file-sink.properties配置了将数据输出到test.sink.txt文件
 此时因为开启了自动提交offset.然后因为消费者被提出了,所以提交失败.  
 重新连接后,获取到了重复数据,处理再次超时,如此循环.  
 他不关闭自动提交,使用spring-kafka提供的listener的ack-Mode.  
-https://www.jianshu.com/p/4e00dff97f39
+https://www.jianshu.com/p/4e00dff97f39  
+再细看了下.简单来说.用spring listener处理提交offset的话.spring kafka在消费者和kafka之间多了一个阻塞队列.  
+当队列满了.停止获取.可以理解为RabbitMQ的Qos策略.
 
 * 配置yml
 >
