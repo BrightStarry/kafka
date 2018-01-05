@@ -1,5 +1,6 @@
 package com.zx.kafka;
 
+import com.zx.kafka.basic.SendAndReceive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class KafkaApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	public void contextLoads() throws InterruptedException {
+		SendAndReceive.sendAndReceive();
 	}
+
+
 
 }
