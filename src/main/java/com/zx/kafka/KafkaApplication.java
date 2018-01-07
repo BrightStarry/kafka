@@ -19,6 +19,6 @@ public class KafkaApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... strings) throws Exception {
-		kafka.send();
+//		kafka.send();
 	}
 }

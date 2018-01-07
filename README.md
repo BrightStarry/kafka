@@ -246,8 +246,56 @@ group: 如果提供了.这些监听器都会被添加到以该值为name的bean�
     }
 >
 
-                
-        
-3、kafkaTemplate发送消息时如果topic不存在，则默认创建server.properties配置的partition的个数，可以指定发送到那个partition，没有指定则采用轮询方式
+
+#### KafkaOffsetMonitor web监控
+* KafkaOffsetMonitor 去github上下载jar.如下运行
+--zk:zookeeper路径,--refresh:刷新间隔,--retain:数据保留时长
+>
+    java -cp KafkaOffsetMonitor-assembly-0.2.1.jar \
+         com.quantifind.kafka.offsetapp.OffsetGetterWeb \
+         --zk localhost:2181 \
+         --port 9099 \
+         --refresh 10.seconds \
+         --retain 2.days
+>
+* 该jar因为内含许多google的url.导致无法连接
+
+#### Kafka Eagle  web监控
+这款不错.文档https://ke.smartloli.org 博客http://www.cnblogs.com/smartloli/
+* 解压.
+* 配置环境变量 KE_HOME 必须
+* 修改配置文件 /conf/system-config.properties
+>
+    ######################################
+    # alarm email configure
+    ######################################
+    kafka.eagle.mail.enable=true
+    kafka.eagle.mail.sa=zx
+    kafka.eagle.mail.username=970389745@qq.com
+    kafka.eagle.mail.server.port=25
+    
+    ######################################
+    # delete kafka topic token
+    ######################################
+    kafka.eagle.topic.token=zx
+    
+    ######################################
+    # kafka sasl authenticate
+    ######################################
+    kafka.eagle.sasl.enable=false
+    kafka.eagle.sasl.protocol=SASL_PLAINTEXT
+    kafka.eagle.sasl.mechanism=PLAIN
+    kafka.eagle.sasl.client=/hadoop/kafka-eagle/conf/kafka_client_jaas.conf
+    
+    ######################################
+    # kafka jdbc driver address
+    ######################################
+    kafka.eagle.driver=com.mysql.jdbc.Driver
+    kafka.eagle.url=jdbc:mysql://rm-uf65k2dia4943tqe25o.mysql.rds.aliyuncs.com:3306/ke?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    kafka.eagle.username=root
+    kafka.eagle.password=ZhengXing36
+>
+* 运行 ./bin/ke.sh start
+* 进入 http://106.14.7.29:8048/ke 
 
     

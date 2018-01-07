@@ -30,16 +30,16 @@ public class Kafka {
 	}
 
 	//监听该主题的消息
-	@KafkaListener(topicPartitions = {@TopicPartition(topic = "topic1",partitions = "1")})
+	@KafkaListener(topicPartitions = {@TopicPartition(topic = "topic1",partitions = "0")})
 	public void listen(ConsumerRecord<Integer,String> consumerRecord) throws InterruptedException {
 		log.info("1分区 - 收到消息:{}",consumerRecord);
 		Thread.sleep(500);
 	}
 
 	//监听该主题的消息
-	@KafkaListener(topicPartitions = {@TopicPartition(topic = "topic1",partitions = "0")})
+	@KafkaListener(topicPartitions = {@TopicPartition(topic = "topic1",partitions = "1")})
 	public void listen2(ConsumerRecord<Integer,String> consumerRecord) throws InterruptedException {
-		log.info("0分区 - 收到消息:{}",consumerRecord);
+		log.info("1分区 - 收到消息:{}",consumerRecord);
 		Thread.sleep(500);
 	}
 }

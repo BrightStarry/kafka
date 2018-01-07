@@ -22,14 +22,14 @@ spring:
     consumer:
       enable-auto-commit: true #是否自动提交消费者的offset(偏移量),也就是该消费者目前在分区日志中的位置
       auto-commit-interval: 100 #自动提交消费者偏移量的间隔,毫秒. 如果ENABLE_AUTO_COMMIT_CONFIG属性开启,它就会生效
-      client-id: 1 #客户端id,发送请求时,会将该值传送到服务端.记录到日志中去
+#      client-id: 2 #客户端id,发送请求时,会将该值传送到服务端.记录到日志中去
       # 消费者没有初始化的偏移量,或者当前偏移量不存在,几种策略
       # latest:最新的偏移量; earliest:最早的偏移量; exception:抛出异常; none:什么都不做.
       auto-offset-reset: earliest
       fetch-max-wait: 1000 # 每次获取请求,最大等待时间
       fetch-min-size: 1 # 每次获取请求.服务端应返回的最小数据量(字节)
       group-id: consumer-group-1 # 消费者所属的消费者组,唯一
-      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer # key反序列化器(此处自动提示要等待会才出来)
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # key反序列化器(此处自动提示要等待会才出来)
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer # value 反序列化器
       max-poll-records: 99999 #单次调用 poll()方法能获取的最大记录数
       heartbeat-interval: 20000 # 心跳检测间隔,需要小于session.timeout.ms
@@ -41,7 +41,7 @@ spring:
       client-id: 2 #客户端id,发送请求时,会将该值传送到服务端.记录到日志中去
       retries: 3 #发送失败时,可重试次数,为0时不重试
       compression-type: none  # 压缩类型， none(默认):不压缩;   可选: gzip snappy lz4
-      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer  # key序列化器
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer  # key序列化器
       value-serializer: org.apache.kafka.common.serialization.StringSerializer # value 反序列化器
     #可传入Map类型参数,配置其他属性(例如这个session.timeout.ms)
     properties:
