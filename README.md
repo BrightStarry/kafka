@@ -293,7 +293,7 @@ group: 如果提供了.这些监听器都会被添加到以该值为name的bean�
     kafka.eagle.driver=com.mysql.jdbc.Driver
     kafka.eagle.url=jdbc:mysql://rm-uf65k2dia4943tqe25o.mysql.rds.aliyuncs.com:3306/ke?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
     kafka.eagle.username=root
-    kafka.eagle.password=ZhengXing36
+    kafka.eagle.password=xx
 >
 * 运行 ./bin/ke.sh start
 * 进入 http://106.14.7.29:8048/ke 
